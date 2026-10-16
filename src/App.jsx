@@ -3,7 +3,7 @@ import { MdOutlineStar } from "react-icons/md";
 const App = () => {
   const [nota, setNota] = useState(null);
   const [mostrarNota, setmostrarNota] = useState(false);
-  return ( 
+  return (
     <div className="h-screen bg-slate-900 flex items-center justify-center p-4">
       <div className="bg-slate-800 w-full max-w-sm rounded-3xl p-8">
         {
@@ -20,15 +20,32 @@ const App = () => {
               <p className="text-white/20 text-center mt-4">
                 Agradecemos por dedicar seu tempo para avaliar. Se precisar, não hesite em entrar em contato!
               </p>
+              <div className="flex gap-3 w-full mt-8">
+                <button
+                  onClick={() => {
+                    setmostrarNota(false);
+                    setNota(null);
+                  }}
+                  className="flex-1 bg-slate-700 text-white rounded-full py-3 font-bold text-sm hover:bg-slate-600 transition"
+                >
+                  AVALIAR DE NOVO
+                </button>
+                <button
+                  onClick={() => setmostrarNota(false)}
+                  className="flex-1 bg-orange-500 text-white rounded-full py-3 font-bold text-sm hover:bg-white hover:text-orange-500 transition"
+                >
+                  VOLTAR
+                </button>
+              </div>
             </div>
           ) : (
             <>
               <div className="w-10 h-10 rounded-full bg-white/10 flex justify-center items-center mb-5">
-                <MdOutlineStar className="text-orange-400"/>
+                <MdOutlineStar className="text-orange-400" />
               </div>
               <h1 className="text-white text-2xl font-bold mt-6">Escolha uma nota</h1>
               <p className="text-slate-400 text-sm leading-6 mt-4">
-                Deixe sua avaliação escolhendo uma nota para o filme. 
+                Deixe sua avaliação escolhendo uma nota para o filme.
               </p>
               <div className="flex justify-between mt-6 *:w-10 *:h-10 *:bg-white/10 *:rounded-full *:flex *:justify-center *:items-center *:text-white *:hover:bg-orange-400 *:duration-200 *:cursor-pointer *:[&.active]:bg-orange-400 font-bold">
                 <button onClick={() => setNota(1)} className={nota === 1 ? "active" : ""}>1</button>
@@ -37,7 +54,7 @@ const App = () => {
                 <button onClick={() => setNota(4)} className={nota === 4 ? "active" : ""}>4</button>
                 <button onClick={() => setNota(5)} className={nota === 5 ? "active" : ""}>5</button>
               </div>
-              <button onClick={()=> setmostrarNota(true)} 
+              <button onClick={() => setmostrarNota(true)}
                 disabled={nota == null}
                 className="w-full h-10 flex justify-center items-center mt-6 bg-white/10 rounded-full text-white hover:bg-orange-400 duration-200 cursor-pointer font-bold disabled:opacity-50 disabled:cursor-not-allowed">
                 ENVIAR
@@ -45,8 +62,8 @@ const App = () => {
             </>
           )
         }
-      </div>  
+      </div>
     </div>
-   );
+  );
 }
 export default App;
